@@ -1,0 +1,21 @@
+# Basic provisioning example
+- ec2:
+    key_name: mykey
+    instance_type: t2.micro
+    image: ami-0cb0e70f44e1a4bb5
+    wait: yes
+    group: webserver
+    count: 1
+    vpc_subnet_id: subnet-99f7daf1
+    assign_public_ip: yes
+
+  tasks:
+    - name: Install Apache Web Server
+      yum: pkg=httpd state=latest
+
+    - name: copying the file
+      template: src=/etc/ansible/index.html dest=/var/www/html
+                owner=www-data group=www-data mode=0644
+    
+   - name: Enable Apache on System Boot
+     service: name=httpd enabled=yes
