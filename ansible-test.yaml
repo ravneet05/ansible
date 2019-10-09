@@ -7,4 +7,4 @@
     register: os_type
     
   - debug:
-      msg: os_type
+      var: os_type
