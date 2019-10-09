@@ -1,0 +1,10 @@
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+  - name: "get server os type"
+    shell: "cat /etc/*release*"
+    register: os_type
+    
+  - debug:
+      msg: os_type
