@@ -3,7 +3,7 @@
   gather_facts: false
   tasks:
   - name: "get server os type"
-    shell: "cat /etc/*release*"
+    shell: "echo Hello Ravneet!"
     register: os_type
     
   - debug:
