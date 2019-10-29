@@ -1,4 +1,8 @@
 # Basic provisioning example
+-hosts: localhost
+ connection: local
+ gather_facts: false
+
 - ec2:
     key_name: mykey
     instance_type: t2.micro
@@ -17,5 +21,18 @@
       template: src=/etc/ansible/index.html dest=/var/www/html
                 owner=www-data group=www-data mode=0644
     
-   - name: Enable Apache on System Boot
-     service: name=httpd enabled=yes
+    - name: Enable Apache on System Boot
+      service: name=httpd enabled=yes
+
+
+
+# - hosts: localhost
+#   connection: local
+#   gather_facts: false
+#   tasks:
+#   - name: "get server os type"
+#     shell: "echo Hello Ravneet!!!!!!"
+#     register: os_type
+    
+#   - debug:
+#       var: os_type
